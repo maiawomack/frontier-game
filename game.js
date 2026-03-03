@@ -1239,7 +1239,7 @@ function updateUI(){
     el.innerHTML=`
       <div class="crew-name">${c.role}${c.isCritical()?'<span class="crew-warning">⚠ CRITICAL</span>':''}</div>
       ${_statBar('☢ Radiation',c.radiation,5,'#ff4444',c.radiation>=3)}
-      ${_statBar('💤 Sleep',c.sleep,5,'#4488ff',c.sleep<=2)}
+      ${_statBar('𝗓ᶻ Sleep',c.sleep,5,'#4488ff',c.sleep<=2)}
       ${_statBar('⚡ Morale',c.morale,5,'#ffaa00',c.morale<=2)}
     `;
     crewDiv.appendChild(el);
