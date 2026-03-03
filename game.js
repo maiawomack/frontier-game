@@ -620,7 +620,7 @@ function triggerEventCard(){
   const doubled=GAME.doubleNextEvent||(GAME.currentPlayer&&GAME.currentPlayer.doubleNextEvent);
   GAME.doubleNextEvent=false;
   if(GAME.currentPlayer) GAME.currentPlayer.doubleNextEvent=false;
-  addLog(`📋 EVENT: "${card.name}"`,'event');
+  addLog(`! EVENT: "${card.name}"`,'event');
   showCard(card,'event');
   if(GAME.currentPlayer) card.effect(GAME.currentPlayer);
   if(doubled){ addLog('EVENT DOUBLED!','warn'); if(GAME.currentPlayer) card.effect(GAME.currentPlayer); }
