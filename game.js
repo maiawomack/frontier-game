@@ -163,7 +163,7 @@ const EVENT_CARDS = [
     text:'All crews beyond Orbit take +2 Radiation. Each gains a Reproduction Risk token.',
     effect(p){
       GAME.players.forEach(pl=>{
-        if(pl.position>2){ pl.crew.forEach(c=>c.adjustStat('radiation',2)); pl.reproRiskTokens++; addLog(`☢ ${pl.name}: +2 Rad, +1 Repro Risk.`,'event'); }
+        if(pl.position>2){ pl.crew.forEach(c=>c.adjustStat('radiation',2)); pl.reproRiskTokens++; addLog(`${pl.name}: +2 Rad, +1 Repro Risk.`,'event'); }
       });
     }
   },
@@ -173,7 +173,7 @@ const EVENT_CARDS = [
     effect(p){
       const w=[...p.crew].sort((a,b)=>a.morale-b.morale)[0];
       w.adjustStat('morale',-1); w.skipNextAction=true;
-      addLog(`😤 ${p.name}: ${w.role} –1 Morale, skips next action.`,'event');
+      addLog(`${p.name}: ${w.role} –1 Morale, skips next action.`,'event');
     }
   },
   {
@@ -184,32 +184,32 @@ const EVENT_CARDS = [
   {
     name:'Comms Delay',
     text:'This faction\'s next Move action resolves 2 turns later and cannot be changed.',
-    effect(p){ p.commsDelay=2; addLog(`📡 ${p.name}: Comms Delay active.`,'event'); }
+    effect(p){ p.commsDelay=2; addLog(`${p.name}: Comms Delay active.`,'event'); }
   },
   {
     name:'Microgravity Syndrome',
     text:'Move actions cost +1 Funding this turn.',
-    effect(p){ p.moveCostModifier+=1; addLog(`🌀 ${p.name}: Move +1 Funding cost.`,'event'); }
+    effect(p){ p.moveCostModifier+=1; addLog(`${p.name}: Move +1 Funding cost.`,'event'); }
   },
   {
     name:'Micrometeor Storm',
     text:'If beyond the Moon: lose 1 Funding or a random crew member takes +1 Radiation.',
     effect(p){
       if(p.position>5){
-        if(p.funding>0){ p.funding--; addLog(`☄ ${p.name}: –1 Funding (storm).`,'event'); }
-        else{ const t=p.crew[Math.floor(Math.random()*p.crew.length)]; t.adjustStat('radiation',1); addLog(`☄ ${p.name}: ${t.role} +1 Rad.`,'event'); }
+        if(p.funding>0){ p.funding--; addLog(`${p.name}: –1 Funding (storm).`,'event'); }
+        else{ const t=p.crew[Math.floor(Math.random()*p.crew.length)]; t.adjustStat('radiation',1); addLog(`${p.name}: ${t.role} +1 Rad.`,'event'); }
       }
     }
   },
   {
     name:'AI Navigation Failure',
     text:'One action slot is locked for all factions this turn.',
-    effect(p){ GAME.players.forEach(pl=>{ pl.navBlocked=true; addLog(`🤖 ${pl.name}: nav failure.`,'event'); }); }
+    effect(p){ GAME.players.forEach(pl=>{ pl.navBlocked=true; addLog(`${pl.name}: nav failure.`,'event'); }); }
   },
   {
     name:'Crew Homesickness',
     text:'All crews beyond Mars lose 2 Morale.',
-    effect(p){ GAME.players.forEach(pl=>{ if(pl.position>8){ pl.crew.forEach(c=>c.adjustStat('morale',-2)); addLog(`🌍 ${pl.name}: homesickness –2 Morale.`,'event'); } }); }
+    effect(p){ GAME.players.forEach(pl=>{ if(pl.position>8){ pl.crew.forEach(c=>c.adjustStat('morale',-2)); addLog(`${pl.name}: homesickness –2 Morale.`,'event'); } }); }
   },
   {
     name:'Life Support Leak',
@@ -224,7 +224,7 @@ const EVENT_CARDS = [
   {
     name:'Signal Corruption',
     text:'All factions with an active Comms Delay have it extended by +1 turn.',
-    effect(p){ GAME.players.forEach(pl=>{ if(pl.commsDelay>0){ pl.commsDelay++; addLog(`📡 ${pl.name}: Comms Delay extended.`,'event'); } }); }
+    effect(p){ GAME.players.forEach(pl=>{ if(pl.commsDelay>0){ pl.commsDelay++; addLog(`${pl.name}: Comms Delay extended.`,'event'); } }); }
   },
   {
     name:'⚡ GLOBAL CATASTROPHE — Solar Superflare',
